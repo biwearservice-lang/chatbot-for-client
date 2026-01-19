@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Chatbot</title>
@@ -17,22 +17,22 @@
 <h1 id="title">Loading...</h1>
 
 <script>
-  // Get client name and company from URL parameters
+  // 🔹 Read values from URL
   const params = new URLSearchParams(window.location.search);
   const name = params.get("name") || "there";
   const company = params.get("company") || "our company";
 
-  // Set page title and heading dynamically
+  // 🔹 Update page title + heading
   document.title = `Hey ${name}, here is the chatbot for you`;
   document.getElementById("title").innerText =
     `Hey ${name}, here is the chatbot for you`;
 
-  // Load Voiceflow chatbot
-  (function(d, t) {
-    var v = d.createElement(t);
-    var s = d.getElementsByTagName(t)[0];
+  // 🔹 Load Voiceflow widget with CONTEXT
+  (function (d, t) {
+    const v = d.createElement(t);
+    const s = d.getElementsByTagName(t)[0];
 
-    v.onload = function() {
+    v.onload = function () {
       window.voiceflow.chat.load({
         verify: { projectID: "6962863ea3c28a27fd60ce69" },
         url: "https://general-runtime.voiceflow.com",
