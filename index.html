@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #ffffff;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+
+<h1 id="title">Loading...</h1>
+
+<script>
+  // Get client name and company from URL parameters
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get("name") || "there";
+  const company = params.get("company") || "our company";
+
+  // Set page title and heading dynamically
+  document.title = `Hey ${name}, here is the chatbot for you`;
+  document.getElementById("title").innerText =
+    `Hey ${name}, here is the chatbot for you`;
+
+  // Load Voiceflow chatbot
+  (function(d, t) {
+    var v = d.createElement(t);
+    var s = d.getElementsByTagName(t)[0];
+
+    v.onload = function() {
+      window.voiceflow.chat.load({
+        verify: { projectID: "6962863ea3c28a27fd60ce69" },
+        url: "https://general-runtime.voiceflow.com",
+        versionID: "production",
+        launch: {
+          context: {
+            company_name: company,
+            user_name: name
+          }
+        }
+      });
+    };
+
+    v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+    v.type = "text/javascript";
+    s.parentNode.insertBefore(v, s);
+  })(document, "script");
+</script>
+
+</body>
+</html>
