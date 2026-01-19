@@ -1,52 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Chatbot</title>
-
+  <meta charset="UTF-8">
+  <title>Company Chatbot</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 40px;
-      background: #ffffff;
-      color: #000000;
     }
   </style>
 </head>
-
 <body>
 
 <h1 id="title">Loading...</h1>
 
 <script>
-  // Read URL params
   const params = new URLSearchParams(window.location.search);
 
-  const name = params.get("name") || "there";
-  const companyName = params.get("company_name") || "your company";
+  const company_name = params.get("company") || "Default Company";
+  const user_name = params.get("name") || "there";
 
-  // Page title
-  document.title = `Hey ${name}, here is the chatbot for you`;
+  document.title = `Hey ${user_name}, here is the chatbot for you`;
   document.getElementById("title").innerText =
-    `Hey ${name}, here is the chatbot for you`;
+    `Hey ${user_name}, here is the chatbot for you`;
 
-  // Load Voiceflow widget
-  (function (d, t) {
+  (function(d, t) {
     var v = d.createElement(t);
     var s = d.getElementsByTagName(t)[0];
 
-    v.onload = function () {
+    v.onload = function() {
       window.voiceflow.chat.load({
-        verify: {
-          projectID: "6962863ea3c28a27fd60ce69"
-        },
+        verify: { projectID: "6962863ea3c28a27fd60ce69" },
         url: "https://general-runtime.voiceflow.com",
         versionID: "production",
-
         launch: {
-          context: {
-            company_name: companyName,
-            user_name: name
+          event: {
+            type: "launch",
+            payload: {
+              company_name: company_name,
+              user_name: user_name
+            }
           }
         }
       });
