@@ -1,14 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Company Chatbot</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-    }
-  </style>
+  <title>Chatbot</title>
 </head>
 <body>
 
@@ -16,7 +10,6 @@
 
 <script>
   const params = new URLSearchParams(window.location.search);
-
   const company_name = params.get("company") || "Default Company";
   const user_name = params.get("name") || "there";
 
@@ -25,9 +18,7 @@
     `Hey ${user_name}, here is the chatbot for you`;
 
   (function(d, t) {
-    var v = d.createElement(t);
-    var s = d.getElementsByTagName(t)[0];
-
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
     v.onload = function() {
       window.voiceflow.chat.load({
         verify: { projectID: "6962863ea3c28a27fd60ce69" },
@@ -44,7 +35,6 @@
         }
       });
     };
-
     v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
     v.type = "text/javascript";
     s.parentNode.insertBefore(v, s);
