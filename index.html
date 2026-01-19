@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Chatbot</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,34 +13,39 @@
     }
   </style>
 </head>
+
 <body>
 
 <h1 id="title">Loading...</h1>
 
 <script>
-  // 🔹 Read values from URL
+  // Read URL params
   const params = new URLSearchParams(window.location.search);
-  const name = params.get("name") || "there";
-  const company = params.get("company") || "our company";
 
-  // 🔹 Update page title + heading
+  const name = params.get("name") || "there";
+  const companyName = params.get("company_name") || "your company";
+
+  // Page title
   document.title = `Hey ${name}, here is the chatbot for you`;
   document.getElementById("title").innerText =
     `Hey ${name}, here is the chatbot for you`;
 
-  // 🔹 Load Voiceflow widget with CONTEXT
+  // Load Voiceflow widget
   (function (d, t) {
-    const v = d.createElement(t);
-    const s = d.getElementsByTagName(t)[0];
+    var v = d.createElement(t);
+    var s = d.getElementsByTagName(t)[0];
 
     v.onload = function () {
       window.voiceflow.chat.load({
-        verify: { projectID: "6962863ea3c28a27fd60ce69" },
+        verify: {
+          projectID: "6962863ea3c28a27fd60ce69"
+        },
         url: "https://general-runtime.voiceflow.com",
         versionID: "production",
+
         launch: {
           context: {
-            company_name: company,
+            company_name: companyName,
             user_name: name
           }
         }
