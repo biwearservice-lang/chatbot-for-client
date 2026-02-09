@@ -77,7 +77,7 @@
 
   <div class="container">
     <div class="left">
-      <h1>Hey <span id="company-name">Client</span>,</h1>
+      <h1>Hey <span id="Remax real estate">Client</span>,</h1>
       <p>
         I built a smart AI assistant that talks to your website visitors,
         answers questions, and captures leads while you focus on your business.
@@ -103,33 +103,19 @@
     document.getElementById("page-title").textContent = companyName + " AI Assistant";
 
     // 3️⃣ Load Voiceflow widget
-    (function (d, t) {
-      var v = d.createElement(t);
-      var s = d.getElementsByTagName(t)[0];
-
-      v.onload = function () {
+   <script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
         window.voiceflow.chat.load({
-          verify: {
-            projectID: "6962863ea3c28a27fd60ce69"
-          },
-          url: "https://general-runtime.voiceflow.com",
-          versionID: "production",
-          launch: {
-            event: {
-              type: "launch",
-              payload: {
-                company_name: companyName
-              }
-            }
+          verify: { projectID: '69896c43f214c3b5add46c1c' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
           }
         });
-      };
-
-      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
-      v.type = "text/javascript";
-      s.parentNode.insertBefore(v, s);
-    })(document, "script");
-  </script>
-
-</body>
-</html>
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
