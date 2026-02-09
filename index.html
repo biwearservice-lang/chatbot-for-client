@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="page-title">Client AI Assistant</title>
-
+  <title id="page-title">Remax Real Estate AI Assistant</title>
   <style>
     body {
       margin: 0;
@@ -14,38 +13,32 @@
       height: 100vh;
       overflow: hidden;
     }
-
     .container {
       display: flex;
       height: 100%;
       padding: 60px;
       box-sizing: border-box;
     }
-
     .left {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-
     .left h1 {
       font-size: 64px;
       margin: 0;
       line-height: 1.1;
     }
-
     .left h1 span {
       color: #b36bff;
     }
-
     .left p {
       margin-top: 20px;
       font-size: 20px;
       color: #ddd;
       max-width: 520px;
     }
-
     .badge {
       margin-top: 30px;
       display: inline-block;
@@ -55,12 +48,10 @@
       font-weight: bold;
       width: fit-content;
     }
-
     /* Reserve space so chatbot sits nicely */
     .chat-space {
       width: 420px;
     }
-
     @media (max-width: 900px) {
       .container {
         flex-direction: column;
@@ -72,50 +63,51 @@
     }
   </style>
 </head>
-
 <body>
-
   <div class="container">
     <div class="left">
-      <h1>Hey <span id="Remax real estate">Client</span>,</h1>
+      <h1>Hey <span id="company-name">Remax Real Estate</span>,</h1>
       <p>
         I built a smart AI assistant that talks to your website visitors,
         answers questions, and captures leads while you focus on your business.
       </p>
-
       <div class="badge">
-        Powered by <span id="company-badge">Your Company</span>
+        Powered by <span id="company-badge">Remax Real Estate</span>
       </div>
     </div>
-
     <div class="chat-space"></div>
   </div>
 
   <!-- ✅ VOICEFLOW CHATBOT WITH DYNAMIC COMPANY -->
   <script type="text/javascript">
-    // 1️⃣ Get company name from URL
+    // 1️⃣ Get company name from URL (fallback to Remax Real Estate)
     const params = new URLSearchParams(window.location.search);
-    const companyName = params.get("company") || "Default Company";
-
+    const companyName = params.get("company") || "Remax Real Estate";
+    
     // 2️⃣ Update text on page
     document.getElementById("company-name").textContent = companyName;
     document.getElementById("company-badge").textContent = companyName;
     document.getElementById("page-title").textContent = companyName + " AI Assistant";
+  </script>
 
-    // 3️⃣ Load Voiceflow widget
-   <script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '69896c43f214c3b5add46c1c' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production',
-          voice: {
-            url: "https://runtime-api.voiceflow.com"
-          }
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
+  <!-- 3️⃣ Load Voiceflow widget -->
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '69896c43f214c3b5add46c1c' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            }
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
+</body>
+</html>
